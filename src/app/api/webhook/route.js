@@ -2,11 +2,8 @@ import { headers } from 'next/headers'
 import Stripe from 'stripe'
 const { NextResponse } = require('next/server')
 
-const stripe = new Stripe(
-  'sk_test_51HS5wuDpeQG0ms9Mfm4Y5ApAAYfkIyltTkLxd1tuNIzyplbBnkX8QjQmTDzaON0rYCOn4x6jyi7saXBOB24Imhos0090WchBpX',
-)
-const endpointSecret =
-  'whsec_KSwFBvqlZnv5kIplCnpUqzIcQ0eTZY11'
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
+const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET
 
 export async function POST(request) {
   const body = await request.text()
