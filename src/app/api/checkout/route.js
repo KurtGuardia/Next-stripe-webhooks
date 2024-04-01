@@ -1,9 +1,7 @@
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
 
-const stripe = new Stripe(
-  'sk_test_51HS5wuDpeQG0ms9Mfm4Y5ApAAYfkIyltTkLxd1tuNIzyplbBnkX8QjQmTDzaON0rYCOn4x6jyi7saXBOB24Imhos0090WchBpX',
-)
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
 export async function POST(request) {
   const body = await request.json()
